@@ -12,10 +12,6 @@ function home() {
 
     const [tasks, addTask] = useState([]);
 
-    const handleChange = (event) => {
-        setInput(event.target.value);
-    };
-
     taskContainer.className = 'task-container';
     document.body.appendChild(taskContainer);
 
@@ -24,18 +20,14 @@ function home() {
         let newDiv = document.createElement('div');
         newDiv.innerText = input;
         taskContainer.appendChild(newDiv);
-        setInput('');
+        taskArr.push(inputRef.current.value);
+        console.log(taskArr);
+        inputRef.current.value = '';
     };
 
     return (
         <div id='home-container'>
-            <input
-                type='text'
-                id='text-box'
-                ref={inputRef}
-                value={input}
-                onChange={handleChange}
-            />
+            <input type='text' id='text-box' ref={inputRef} />
             <button id='click-button' onClick={handleClick}>
                 click
             </button>
