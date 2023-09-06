@@ -16,13 +16,14 @@ function home() {
     document.body.appendChild(taskContainer);
 
     const handleClick = () => {
-        setUpdated(input);
-        let newDiv = document.createElement('div');
-        newDiv.innerText = input;
-        taskContainer.appendChild(newDiv);
         taskArr.push(inputRef.current.value);
-        console.log(taskArr);
+        // console.log(taskArr);
         inputRef.current.value = '';
+        // console.log(typeof taskArr.pop());
+        const taskDiv = document.createElement('div');
+        taskDiv.className = 'task-div';
+        taskDiv.innerText = taskArr.pop();
+        taskContainer.appendChild(taskDiv);
     };
 
     return (
