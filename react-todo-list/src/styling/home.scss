@@ -1,0 +1,42 @@
+$white: rgb(240, 240, 240);
+$grey: rgb(113, 113, 113);
+$black: rgb(12, 12, 12);
+$darker-black: rgb(5, 5, 5);
+
+#home-container
+{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    input
+    {
+        height: 30px;
+        width: 200px;
+    }
+
+    button
+    {
+        height: 40px;
+    }
+}
+
+.task-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.task-div
+{
+    min-width: 50vw;
+    background-color: $grey;
+    border-radius: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

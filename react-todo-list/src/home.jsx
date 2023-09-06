@@ -1,38 +1,35 @@
 import React, { useState, useRef } from 'react';
-
-const taskContainer = document.createElement('div');
-const taskArr = [];
+import './styling/home.scss';
 
 function home() {
     const inputRef = useRef();
 
-    let [input, setInput] = useState('');
+    const taskArr = [];
 
-    const [updated, setUpdated] = useState(input);
-
-    const [tasks, addTask] = useState([]);
-
+    const taskContainer = document.createElement('div');
     taskContainer.className = 'task-container';
     document.body.appendChild(taskContainer);
 
     const handleClick = () => {
         taskArr.push(inputRef.current.value);
-        // console.log(taskArr);
         inputRef.current.value = '';
-        // console.log(typeof taskArr.pop());
-        const taskDiv = document.createElement('div');
-        taskDiv.className = 'task-div';
-        taskDiv.innerText = taskArr.pop();
-        taskContainer.appendChild(taskDiv);
+
+        if (taskArr[taskArr.length - 1] !== '') {
+            const taskDiv = document.createElement('div');
+            const taskText = document.createElement('p');
+            taskDiv.className = 'task-div';
+
+            taskText.innerText = taskArr[taskArr.length - 1];
+            taskContainer.appendChild(taskDiv);
+            taskDiv.appendChild(taskText);
+            taskContainer.appendChild(taskDiv);
+        }
     };
 
     return (
         <div id='home-container'>
-            <input type='text' id='text-box' ref={inputRef} />
-            <button id='click-button' onClick={handleClick}>
-                click
-            </button>
-            <p>{updated}</p>
+            <input type='text' ref={inputRef} />
+            <button onClick={handleClick}>Add</button>
         </div>
     );
 }
