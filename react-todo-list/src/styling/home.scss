@@ -24,19 +24,28 @@ $darker-black: rgb(5, 5, 5);
 
 .task-container
 {
-    display: flex;
-    flex-direction: column;
     gap: 10px;
-}
-
-
-.task-div
-{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     min-width: 50vw;
+    max-width: 80vw;
     background-color: $grey;
     border-radius: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 20px;
     padding-right: 20px;
+
+    .delete-btn
+    {
+        background: none;
+        max-width: 16px;
+        grid-column: 2;
+        
+        img
+        {
+            max-width: 16px;
+        }
+    }
 }
+

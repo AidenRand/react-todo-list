@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import DelIcon from './assets/close-btn.png';
 import './styling/home.scss';
 
 function home() {
@@ -8,27 +9,26 @@ function home() {
 
     const taskContainer = document.createElement('div');
     taskContainer.className = 'task-container';
-    document.body.appendChild(taskContainer);
 
     const handleClick = () => {
         taskArr.push(inputRef.current.value);
         inputRef.current.value = '';
 
         if (taskArr[taskArr.length - 1] !== '') {
-            const taskDiv = document.createElement('div');
             const taskText = document.createElement('p');
-            taskDiv.className = 'task-div';
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerHTML = `<img src=${DelIcon} alt='close-btn' />`;
+            deleteBtn.className = 'delete-btn';
 
             taskText.innerText = taskArr[taskArr.length - 1];
-            taskContainer.appendChild(taskDiv);
-            taskDiv.appendChild(taskText);
-            taskContainer.appendChild(taskDiv);
+            document.body.appendChild(taskContainer);
+            taskContainer.appendChild(taskText);
         }
     };
 
     return (
         <div id='home-container'>
-            <input type='text' ref={inputRef} />
+            <input type='text' ref={inputRef} maxLength={60} />
             <button onClick={handleClick}>Add</button>
         </div>
     );
