@@ -24,7 +24,7 @@ function home() {
     };
 
     return (
-        <div>
+        <>
             <div id='input-container'>
                 <input type='text' ref={inputRef} maxLength={40} />
                 <button onClick={handleClick}>Add</button>
@@ -43,7 +43,7 @@ function home() {
                     </div>
                 ))}
             </div>
-        </div>
+        </>
     );
 }
 
