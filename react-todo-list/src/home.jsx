@@ -18,7 +18,9 @@ function home() {
         setTasks(updatedTask);
     };
 
-    const handleComplete = (index) => {};
+    const handleComplete = (index) => {
+        console.log(index);
+    };
 
     const handleClick = () => {
         if (inputRef.current.value !== '') {
@@ -43,14 +45,17 @@ function home() {
             <div id='task-container'>
                 {tasks.map((task, index) => (
                     <div id='task-div' key={index}>
-                        <p ref={taskTextRef}>{task.todo}</p>
+                        <p>{task.todo}</p>
                         <button
                             id='delete-btn'
                             onClick={() => handleDelete(index)}
                         >
                             <img src={DelIcon} alt='delete-btn' />
                         </button>
-                        <button id='check-btn'>
+                        <button
+                            id='check-btn'
+                            onClick={() => handleComplete(index)}
+                        >
                             <img src={CheckIcon} alt='check-btn' />
                         </button>
                     </div>
