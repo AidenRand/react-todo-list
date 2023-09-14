@@ -3,10 +3,6 @@ import DelIcon from './assets/close-icon.png';
 import CheckIcon from './assets/check-icon.png';
 import './styling/home.scss';
 
-function Task(todo) {
-    this.todo = todo;
-}
-
 function Home() {
     const [tasks, setTasks] = useState([]);
     const [complete, setComplete] = useState(false);
@@ -14,11 +10,12 @@ function Home() {
     const checkBtnRef = useRef();
 
     const handleDelete = (index) => {
-        w;
         const updatedTask = [...tasks];
         updatedTask.splice(index, 1);
         setTasks(updatedTask);
     };
+
+    console.log(tasks);
 
     const handleComplete = (index) => {
         checkBtnRef.current.style.backgroundColor = 'red';
@@ -26,9 +23,8 @@ function Home() {
 
     const handleClick = () => {
         if (inputRef.current.value !== '') {
-            const todo = inputRef.current.value;
-            const newTask = new Task(todo);
-            setTasks([...tasks, newTask]);
+            const task = inputRef.current.value;
+            setTasks([...tasks, task]);
             inputRef.current.value = '';
         } else {
             alert('Input cannot be empty');
@@ -49,7 +45,7 @@ function Home() {
                         className='task-div'
                         key={index}
                     >
-                        <p>{task.todo}</p>
+                        <p>{task}</p>
                         <button
                             id={`check-btn-${index}`}
                             className='check-button'
