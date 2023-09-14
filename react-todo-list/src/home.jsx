@@ -7,19 +7,21 @@ function Task(todo) {
     this.todo = todo;
 }
 
-function home() {
+function Home() {
     const [tasks, setTasks] = useState([]);
     const [complete, setComplete] = useState(false);
     const inputRef = useRef();
+    const checkBtnRef = useRef();
 
     const handleDelete = (index) => {
+        w;
         const updatedTask = [...tasks];
         updatedTask.splice(index, 1);
         setTasks(updatedTask);
     };
 
     const handleComplete = (index) => {
-        console.log(index);
+        checkBtnRef.current.style.backgroundColor = 'red';
     };
 
     const handleClick = () => {
@@ -33,8 +35,6 @@ function home() {
         }
     };
 
-    console.log([...tasks]);
-
     return (
         <>
             <div id='input-container'>
@@ -44,19 +44,26 @@ function home() {
 
             <div id='task-container'>
                 {tasks.map((task, index) => (
-                    <div id='task-div' key={index}>
+                    <div
+                        id={`task-div-${index}`}
+                        className='task-div'
+                        key={index}
+                    >
                         <p>{task.todo}</p>
                         <button
-                            id='delete-btn'
-                            onClick={() => handleDelete(index)}
-                        >
-                            <img src={DelIcon} alt='delete-btn' />
-                        </button>
-                        <button
-                            id='check-btn'
+                            id={`check-btn-${index}`}
+                            className='check-button'
+                            ref={checkBtnRef}
                             onClick={() => handleComplete(index)}
                         >
                             <img src={CheckIcon} alt='check-btn' />
+                        </button>
+                        <button
+                            id={`delete-btn ${index}`}
+                            className='delete-btn'
+                            onClick={() => handleDelete(index)}
+                        >
+                            <img src={DelIcon} alt='delete-btn' />
                         </button>
                     </div>
                 ))}
@@ -65,4 +72,4 @@ function home() {
     );
 }
 
-export default home;
+export default Home;

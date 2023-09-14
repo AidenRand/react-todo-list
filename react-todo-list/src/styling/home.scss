@@ -32,7 +32,7 @@ $darker-black: rgb(5, 5, 5);
     gap: 10px;
     grid-row: 2;
 
-    #task-div
+    .task-div
     {
         display: grid;
         grid-template-columns: 3fr 1fr;
@@ -49,10 +49,23 @@ $darker-black: rgb(5, 5, 5);
             margin-left: 10px;
         }
 
-        #delete-btn
+        .delete-btn
         {
             background: none;
             margin-left: auto;
+            grid-column: 2;
+    
+            img
+            {
+                max-width: 16px;
+            }
+        }
+
+        .check-button
+        {
+            background: none;
+            margin-left: auto;
+            grid-column: 2;
     
             img
             {
