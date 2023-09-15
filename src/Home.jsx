@@ -6,7 +6,7 @@ import './styling/home.scss';
 function Home() {
     const [tasks, setTasks] = useState([]);
     const inputRef = useRef();
-    const [active, setActive] = useState();
+    const [active, setActive] = useState(true);
     const taskRef = useMemo(() => tasks.map(() => createRef()), [tasks]);
 
     const handleDelete = (index) => {
