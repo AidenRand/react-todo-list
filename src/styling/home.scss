@@ -1,0 +1,77 @@
+$white: rgb(240, 240, 240);
+$grey: rgb(113, 113, 113);
+$black: rgb(12, 12, 12);
+$darker-black: rgb(5, 5, 5);
+
+
+#input-container
+{   
+    display: flex;
+    gap: 10px;
+    grid-row: 1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+
+    input
+    {
+        height: 30px;
+        width: 200px;
+    }
+
+    button
+    {
+        height: 40px;
+    }
+}
+
+#task-container
+{
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    gap: 10px;
+    grid-row: 2;
+
+    .task-div
+    {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        min-width: 80vw;
+        background-color: $grey;
+        border-radius: 5px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        vertical-align: middle;
+
+        p
+        {
+            margin-right: auto;
+            margin-left: 10px;
+        }
+
+        .delete-btn
+        {
+            background: none;
+            margin-left: auto;
+            grid-column: 2;
+    
+            img
+            {
+                max-width: 16px;
+            }
+        }
+
+        .check-button
+        {
+            background: none;
+            margin-left: auto;
+            grid-column: 2;
+    
+            img
+            {
+                max-width: 16px;
+            }
+        }
+
+    }
+}
