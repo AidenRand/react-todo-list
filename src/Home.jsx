@@ -6,6 +6,8 @@ import './styling/home.scss';
 function Home() {
     const [tasks, setTasks] = useState([]);
     const inputRef = useRef();
+    const dateRef = useRef();
+    const [date, setDate] = useState(false);
     const [active, setActive] = useState(true);
     const taskRef = useMemo(() => tasks.map(() => createRef()), [tasks]);
 
@@ -23,8 +25,10 @@ function Home() {
 
         if (active) {
             taskRef[index].current.style.textDecoration = 'line-through';
+            taskRef[index].current.style.color = '#474747';
         } else {
             taskRef[index].current.style.textDecoration = 'none';
+            taskRef[index].current.style.color = '#fdfdfd';
         }
     };
 
@@ -33,15 +37,22 @@ function Home() {
             const task = inputRef.current.value;
             setTasks([...tasks, task]);
             inputRef.current.value = '';
+
+            const dateValue = dateRef.current.value;
+            setDate(dateValue);
+            // dateRef.current.value = '';
         } else {
             alert('Input cannot be empty');
         }
+
+        console.log(dateRef.current.value);
     };
 
     return (
         <>
             <div id='input-container'>
                 <input type='text' ref={inputRef} maxLength={80} />
+                <input type='date' ref={dateRef} />
                 <button onClick={handleClick}>Add</button>
             </div>
 
@@ -52,6 +63,7 @@ function Home() {
                         className='task-div'
                         key={index}
                     >
+                        <p>{date}</p>
                         <p ref={taskRef[index]}>{task}</p>
                         <button
                             className={`check-button`}
