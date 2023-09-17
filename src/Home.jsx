@@ -41,8 +41,6 @@ function Home() {
             const dateValue = dateInputRef.current.value;
             setDate([...date, dateValue]);
             dateInputRef.current.value = '';
-            // console.log(dates);
-            console.log(tasks);
         } else {
             alert('Input cannot be empty');
         }
@@ -63,9 +61,11 @@ function Home() {
                         className='task-div'
                         key={index}
                     >
-                        <p ref={taskRef[index]}>{task}</p>
+                        <p className='task-text' ref={taskRef[index]}>
+                            {task}
+                        </p>
 
-                        <p id={`date-${index}`}>{date[index]}</p>
+                        <p className='date-text'>{date[index]}</p>
 
                         <button
                             className={`check-button`}
