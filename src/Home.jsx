@@ -6,8 +6,8 @@ import './styling/home.scss';
 function Home() {
     const [tasks, setTasks] = useState([]);
     const inputRef = useRef();
-    const dateRef = useRef();
-    const [date, setDate] = useState(false);
+    const dateInputRef = useRef();
+    const [date, setDate] = useState([]);
     const [active, setActive] = useState(true);
     const taskRef = useMemo(() => tasks.map(() => createRef()), [tasks]);
 
@@ -38,21 +38,21 @@ function Home() {
             setTasks([...tasks, task]);
             inputRef.current.value = '';
 
-            const dateValue = dateRef.current.value;
-            setDate(dateValue);
-            // dateRef.current.value = '';
+            const dateValue = dateInputRef.current.value;
+            setDate([...date, dateValue]);
+            dateInputRef.current.value = '';
+            // console.log(dates);
+            console.log(tasks);
         } else {
             alert('Input cannot be empty');
         }
-
-        console.log(dateRef.current.value);
     };
 
     return (
         <>
             <div id='input-container'>
                 <input type='text' ref={inputRef} maxLength={80} />
-                <input type='date' ref={dateRef} />
+                <input type='date' ref={dateInputRef} />
                 <button onClick={handleClick}>Add</button>
             </div>
 
@@ -63,8 +63,10 @@ function Home() {
                         className='task-div'
                         key={index}
                     >
-                        <p>{date}</p>
                         <p ref={taskRef[index]}>{task}</p>
+
+                        <p id={`date-${index}`}>{date[index]}</p>
+
                         <button
                             className={`check-button`}
                             onClick={() => handleComplete(index)}
